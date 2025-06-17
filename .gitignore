@@ -15,6 +15,7 @@ client/node_modules/
 client/build/
 client/.env # If you accidentally put a .env inside client/
 client/public/
+client/src/index.css
 
 server/node_modules/
 server/build/ # In case your server has a build output
