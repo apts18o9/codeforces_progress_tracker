@@ -1,0 +1,27 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+.DS_Store # macOS specific system files
+
+# Environment variables (Crucial for security!)
+.env
+*.env.local # For create-react-app local environment files
+
+# Build/Distribution folders
+build/
+dist/
+
+client/node_modules/
+client/build/
+client/.env # If you accidentally put a .env inside client/
+
+
+server/node_modules/
+server/build/ # In case your server has a build output
+server/.env # The main .env for your backend is here
+
+# IDE configuration (e.g., VS Code)
+.vscode/
+
+# Logs
+*.log
