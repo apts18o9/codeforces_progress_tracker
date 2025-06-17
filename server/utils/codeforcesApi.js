@@ -1,17 +1,11 @@
 // server/utils/codeforcesApi.js
 
 const axios = require('axios');
-// No need for dotenv here if environment variables are loaded in app.js/server.js
-// and passed where needed, or if API keys are not directly used in public endpoints.
+
 
 const CODEFORCES_API_BASE_URL = 'https://codeforces.com/api/';
 
-/**
- * Helper function to extract a Codeforces handle from a full URL.
- * This ensures that only the actual handle is used for API requests.
- * @param {string} input - The string that might be a handle or a full URL.
- * @returns {string} The extracted Codeforces handle, or an empty string if input is invalid.
- */
+
 const extractHandleFromUrl = (input) => {
   if (!input) return ''; // Handle null or empty input
   const urlPrefixes = [
@@ -29,12 +23,7 @@ const extractHandleFromUrl = (input) => {
   return cleaned.trim(); // Trim again in case there was trailing whitespace after prefix
 };
 
-/**
- * Fetches user information (rating, max rating, etc.) from the Codeforces API.
- * Uses the cleaned handle for the API request.
- * @param {string} handle - The Codeforces user handle (can be a raw handle or a profile URL).
- * @returns {Promise<object|null>} A promise that resolves to the user info object if successful, or null otherwise.
- */
+
 const fetchUserInfo = async (handle) => {
   const cleanedHandle = extractHandleFromUrl(handle); // Ensure only handle is used
   if (!cleanedHandle) {
@@ -59,12 +48,6 @@ const fetchUserInfo = async (handle) => {
   }
 };
 
-/**
- * Fetches contest rating history for a user from the Codeforces API.
- * Uses the cleaned handle for the API request.
- * @param {string} handle - The Codeforces user handle (can be a raw handle or a profile URL).
- * @returns {Promise<Array<object>>} A promise that resolves to an array of contest rating objects, or an empty array.
- */
 const fetchUserRatingHistory = async (handle) => {
   const cleanedHandle = extractHandleFromUrl(handle); // Ensure only handle is used
   if (!cleanedHandle) {
@@ -87,13 +70,7 @@ const fetchUserRatingHistory = async (handle) => {
   }
 };
 
-/**
- * Fetches user submissions from the Codeforces API.
- * Uses the cleaned handle for the API request.
- * @param {string} handle - The Codeforces user handle (can be a raw handle or a profile URL).
- * @param {number} count - Number of latest submissions to fetch (default: 1000).
- * @returns {Promise<Array<object>>} A promise that resolves to an array of submission objects, or an empty array.
- */
+
 const fetchUserSubmissions = async (handle, count = 1000) => {
   const cleanedHandle = extractHandleFromUrl(handle); // Ensure only handle is used
   if (!cleanedHandle) {
